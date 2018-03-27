@@ -7,6 +7,9 @@
   {{storeNum}}
   {{storeCount}}
   <button @click="addCount">+1</button>
+    <div>
+       <router-view/>
+     </div>
   </div>
 </template>
 
@@ -45,4 +48,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 </style>
