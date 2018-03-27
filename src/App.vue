@@ -4,6 +4,7 @@
   <ul>
   <li v-for="list in storeList">{{list}}</li>
   </ul>
+  {{storeNum}}
   {{storeCount}}
   <button @click="addCount">+1</button>
   </div>
@@ -25,8 +26,9 @@ export default {
     ...mapState({
       storeTitle:'title',
       storeList:'lists',
+      storeNum:state => state.count,
       storeCount(state){
-        return state.count+this.localcount
+        return state.count+this.localcount;
       },
       })
   },
