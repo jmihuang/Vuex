@@ -2,9 +2,9 @@
   <div>
   {{dbcount}}
   <ul>
-  <li v-for="list in lists">{{list}}</li>
+  <li v-for="list in storeList">{{list}}</li>
   </ul>
-  {{count}}
+  {{storeCount}}
   <button @click="addCount">+1</button>
   </div>
 </template>
@@ -22,7 +22,13 @@ export default {
     dbcount(){
       return this.localcount*2
     },
-    ...mapState(['count','title','lists']),
+    ...mapState({
+      storeTitle:'title',
+      storeList:'lists',
+      storeCount(state){
+        return state.count+this.localcount
+      },
+      })
   },
   methods:mapMutations(['addCount'])
 }
