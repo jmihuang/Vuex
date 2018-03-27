@@ -1,13 +1,23 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+  <div>
+  {{count}}
+  <button @click="addCount">+1</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  computed:{
+    count(){
+      return this.$store.state.count
+    }
+  },
+  methods:{
+    addCount(){
+      this.$store.commit('addCount');
+    }
+  }
 }
 </script>
 
