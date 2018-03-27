@@ -21,7 +21,10 @@
         },
         methods:{
             addDbcount(){
-                this.$store.commit('addDbcount',10);
+                this.$store.commit({
+                    type:'addDbcount',
+                    addon:10
+                });
             }
         }
     }
