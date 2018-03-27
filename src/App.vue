@@ -1,15 +1,29 @@
 <template>
   <div>
+  {{dbcount}}
+  <ul>
+  <li v-for="list in lists">{{list}}</li>
+  </ul>
   {{count}}
   <button @click="addCount">+1</button>
   </div>
 </template>
 
 <script>
-import {mapState,mapMutations}from 'vuex';
+import { mapState , mapMutations }from 'vuex';
 export default {
   name: 'App',
-  computed:mapState(['count']),
+  data(){
+    return {
+      localcount:3890
+    }
+  },
+  computed:{
+    dbcount(){
+      return this.localcount*2
+    },
+    ...mapState(['count','title','lists']),
+  },
   methods:mapMutations(['addCount'])
 }
 </script>
