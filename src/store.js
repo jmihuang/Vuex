@@ -16,7 +16,7 @@ const store = new Vuex.Store({
             Vue.set(state, 'loding', true);
         },
         addDbcount(state, payload) {
-            state.count += payload.addon
+            state.count += payload
         }
     }
 })

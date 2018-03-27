@@ -1,7 +1,7 @@
 <template>  
 <div>
 <h1>{{count}}</h1>
-<button @click="addDbcount">+10</button>
+<button @click="addDbcount(10)">+10</button>
   <ul>
      <li v-for="list in lists">{{list}}</li>
   </ul>
@@ -10,6 +10,7 @@
 
 
 <script>
+import {mapMutations} from 'vuex';
    export default {
         computed:{
             lists(){
@@ -19,13 +20,8 @@
                 return this.$store.state.count;
             },
         },
-        methods:{
-            addDbcount(){
-                this.$store.commit({
-                    type:'addDbcount',
-                    addon:10
-                });
-            }
-        }
+        methods:mapMutations({
+            addDbcount:'addDbcount'
+        })
     }
 </script>
