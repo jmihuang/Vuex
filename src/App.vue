@@ -6,18 +6,11 @@
 </template>
 
 <script>
+import {mapState,mapMutations}from 'vuex';
 export default {
   name: 'App',
-  computed:{
-    count(){
-      return this.$store.state.count
-    }
-  },
-  methods:{
-    addCount(){
-      this.$store.commit('addCount');
-    }
-  }
+  computed:mapState(['count']),
+  methods:mapMutations(['addCount'])
 }
 </script>
 
