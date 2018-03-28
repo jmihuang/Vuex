@@ -16,6 +16,8 @@
   </ul>
   <b>已勾選：{{itemsDone}} 未勾選{{itemsNotDone}} 選取的項目有{{itemsWithID}}</b>
   <button @click="test(2)">itemsPickId</button> 目前選中的是{{pickId}}
+<h2>Action讀取api</h2>
+  {{apidata}}
   </div>
 
 </template>
@@ -38,6 +40,7 @@ export default {
       storeList:'lists',
       items:'items',
       pickId:'pickId',
+      apidata:'apidata',
       storeNum:state => state.count,
       storeCount(state){
           return state.count+this.localcount;
@@ -50,7 +53,11 @@ export default {
       this.itemsPickId(id);
     },
     ...mapMutations(['addCount'])
-  } 
+  },
+  mounted(){
+    //傳送至action觸發fetchApi事件傳入payload action必須使用dispatch 
+      this.$store.dispatch('fetchApi',{page:2})
+  }
 }
 </script>
 
