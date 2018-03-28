@@ -7,7 +7,12 @@ const store = new Vuex.Store({
     state: {
         count: 0,
         lists: ['a', 'b', 'c'],
-        title: 'StoreVuex'
+        title: 'StoreVuex',
+        items: [
+            { todo: 'return perchale', done: false },
+            { todo: 'withdraw money', done: false },
+            { todo: 'take cake from bakery', done: false }
+        ]
     },
     mutations: {
         addCount(state) {
@@ -17,6 +22,11 @@ const store = new Vuex.Store({
         },
         addDbcount(state, payload) {
             state.count += payload
+        }
+    },
+    getters: {
+        itemsDone(state) {
+            return state.items.filter(item => item.done).length;
         }
     }
 })

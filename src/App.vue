@@ -10,16 +10,22 @@
     <div>
        <router-view/>
      </div>
+  <h2>TODO</h2>
+  <ul>
+    <li v-for="item in items"><input type="checkbox" v-model="item.done">{{item.todo}}</li>
+  </ul>
+  <b>已勾選：{{itemsDone}}</b>
   </div>
+
 </template>
 
 <script>
-import { mapState , mapMutations }from 'vuex';
+import { mapState , mapMutations ,mapGetters}from 'vuex';
 export default {
   name: 'App',
   data(){
     return {
-      localcount:3890
+      localcount:3890,
     }
   },
   computed:{
@@ -29,11 +35,13 @@ export default {
     ...mapState({
       storeTitle:'title',
       storeList:'lists',
+      items:'items',
       storeNum:state => state.count,
       storeCount(state){
-        return state.count+this.localcount;
-      },
-      })
+          return state.count+this.localcount;
+        },
+      }),
+    ...mapGetters(['itemsDone'])
   },
   methods:mapMutations(['addCount'])
 }
