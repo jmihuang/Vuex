@@ -10,11 +10,11 @@
     <div>
        <router-view/>
      </div>
-  <h2>TODO</h2>
+  <h2>Getters</h2>
   <ul>
     <li v-for="item in items"><input type="checkbox" v-model="item.done">{{item.todo}}</li>
   </ul>
-  <b>已勾選：{{itemsDone}} 未勾選{{itemsNotDone}}</b>
+  <b>已勾選：{{itemsDone}} 未勾選{{itemsNotDone}} 選取的項目有{{itemsWithID}}</b>
   </div>
 
 </template>
@@ -41,7 +41,7 @@ export default {
           return state.count+this.localcount;
         },
       }),
-    ...mapGetters(['itemsDone','itemsNotDone'])
+    ...mapGetters(['itemsDone','itemsNotDone','itemsWithID'])
   },
   methods:mapMutations(['addCount'])
 }

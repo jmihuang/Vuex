@@ -9,9 +9,9 @@ const store = new Vuex.Store({
         lists: ['a', 'b', 'c'],
         title: 'StoreVuex',
         items: [
-            { todo: 'return perchale', done: false },
-            { todo: 'withdraw money', done: false },
-            { todo: 'take cake from bakery', done: false }
+            { id: 1, todo: 'return perchale', done: false },
+            { id: 2, todo: 'withdraw money', done: false },
+            { id: 3, todo: 'take cake from bakery', done: false }
         ]
     },
     mutations: {
@@ -30,6 +30,14 @@ const store = new Vuex.Store({
         },
         itemsNotDone(state, getters) {
             return state.items.length - getters.itemsDone;
+        },
+        itemsWithID(state) {
+            let ids = [];
+            state.items.forEach(item => {
+                if (item.done)
+                    ids.push(item.id);
+            });
+            return ids.join();
         }
     }
 })
