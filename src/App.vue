@@ -14,7 +14,7 @@
   <ul>
     <li v-for="item in items"><input type="checkbox" v-model="item.done">{{item.todo}}</li>
   </ul>
-  <b>已勾選：{{itemsDone}}</b>
+  <b>已勾選：{{itemsDone}} 未勾選{{itemsNotDone}}</b>
   </div>
 
 </template>
@@ -41,7 +41,7 @@ export default {
           return state.count+this.localcount;
         },
       }),
-    ...mapGetters(['itemsDone'])
+    ...mapGetters(['itemsDone','itemsNotDone'])
   },
   methods:mapMutations(['addCount'])
 }

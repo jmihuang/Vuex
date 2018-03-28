@@ -27,6 +27,9 @@ const store = new Vuex.Store({
     getters: {
         itemsDone(state) {
             return state.items.filter(item => item.done).length;
+        },
+        itemsNotDone(state, getters) {
+            return state.items.length - getters.itemsDone;
         }
     }
 })
