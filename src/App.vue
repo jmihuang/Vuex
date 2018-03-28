@@ -15,6 +15,7 @@
     <li v-for="item in items"><input type="checkbox" v-model="item.done">{{item.todo}}</li>
   </ul>
   <b>已勾選：{{itemsDone}} 未勾選{{itemsNotDone}} 選取的項目有{{itemsWithID}}</b>
+  <button @click="test(2)">itemsPickId</button> 目前選中的是{{pickId}}
   </div>
 
 </template>
@@ -36,14 +37,20 @@ export default {
       storeTitle:'title',
       storeList:'lists',
       items:'items',
+      pickId:'pickId',
       storeNum:state => state.count,
       storeCount(state){
           return state.count+this.localcount;
         },
       }),
-    ...mapGetters(['itemsDone','itemsNotDone','itemsWithID'])
+    ...mapGetters(['itemsDone','itemsNotDone','itemsWithID','itemsPickId'])
   },
-  methods:mapMutations(['addCount'])
+  methods:{
+    test(id){
+      this.itemsPickId(id);
+    },
+    ...mapMutations(['addCount'])
+  } 
 }
 </script>
 

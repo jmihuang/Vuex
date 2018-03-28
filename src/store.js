@@ -38,6 +38,11 @@ const store = new Vuex.Store({
                     ids.push(item.id);
             });
             return ids.join();
+        },
+        itemsPickId(state) {
+            return (pickId) => {
+                Vue.set(state, 'pickId', pickId);
+            }
         }
     }
 })
