@@ -16,6 +16,7 @@ const store = new Vuex.Store({
         apidata: {}
 
     },
+    //等同methods
     mutations: {
         addCount(state) {
             state.count += 1;
@@ -30,6 +31,7 @@ const store = new Vuex.Store({
             state.apidata = payload;
         }
     },
+    //等同computed
     getters: {
         itemsDone(state) {
             return state.items.filter(item => item.done).length;

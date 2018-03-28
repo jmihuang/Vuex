@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { mapState , mapMutations ,mapGetters}from 'vuex';
+import { mapState , mapMutations ,mapGetters,mapActions}from 'vuex';
 export default {
   name: 'App',
   data(){
@@ -52,11 +52,12 @@ export default {
     test(id){
       this.itemsPickId(id);
     },
-    ...mapMutations(['addCount'])
+    ...mapMutations(['addCount']),
+    ...mapActions(['fetchApi'])
   },
   mounted(){
     //傳送至action觸發fetchApi事件傳入payload action必須使用dispatch 
-      this.$store.dispatch('fetchApi',{page:2})
+      this.fetchApi({page:2})
   }
 }
 </script>
