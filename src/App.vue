@@ -58,9 +58,11 @@ export default {
   mounted(){
     //傳送至action觸發fetchApi事件傳入payload action必須使用dispatch 
       this.fetchApi({page:2})
-        .then( rs =>{
-          console.log(rs.data[0].first_name);
-        });
+      //store.js 使用return promise 就可在此使用.then
+        .then( ()=>{
+          console.log('非同步fetchApi完成後執行的function');
+        }
+        );
   }
 }
 </script>
