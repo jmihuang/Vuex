@@ -58,6 +58,9 @@ export default {
   mounted(){
     //傳送至action觸發fetchApi事件傳入payload action必須使用dispatch 
       this.fetchApi({page:2})
+        .then( rs =>{
+          console.log(rs.data[0].first_name);
+        });
   }
 }
 </script>

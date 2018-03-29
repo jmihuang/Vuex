@@ -55,15 +55,23 @@ const store = new Vuex.Store({
     },
     actions: {
         //非同步的只能使用action 不可使用mutations
-        fetchApi(store, payload) {
+        //使用{ commit,dispatch },不同步完成後 續執行fetch2ndApi
+        fetchApi({ commit, dispatch }, payload) {
             const url = "https://reqres.in/api/users?page=";
-            fetch(`${url}${payload.id}`, { method: 'get' })
-                .then(function (response) {
-                    return response.json();
-                }).then(function (rs) {
-                    //但action不能置換state值，所以必須用commit傳到mutaions去寫入
-                    store.commit('apidata', rs);
-                })
+            return new Promise(resolve => {
+                fetch(`${url}${payload.id}`, { method: 'get' })
+                    .then(function (response) {
+                        return response.json();
+                    }).then(function (rs) {
+                        //但action不能置換state值，所以必須用commit傳到mutaions去寫入
+                        store.commit('apidata', rs);
+                        dispatch('fetch2ndApi');
+                        resolve(rs);
+                    })
+            });
+        },
+        fetch2ndApi() {
+            console.log('fetch2ndApi');
         }
 
     }
